@@ -1,0 +1,30 @@
+.DS_Store
+.env
+.env.*
+.env.local
+.env.development
+.env.production
+.env.test
+
+# dependencies
+node_modules/
+
+# next.js
+.next/
+out/
+
+# build output
+dist/
+build/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# coverage
+coverage/
+
+# pipeline outputs/cache
+pipeline/data/*.json

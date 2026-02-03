@@ -6,6 +6,12 @@ All changes to the project are logged here.
 
 ## 2026-02-02
 
+### Add Single-Site Test Pipeline Command
+- **Timestamp:** 2026-02-02T21:20:00
+- **Files:** `pipeline/src/single.ts`, `pipeline/package.json`
+- **Change:** Added a single-site scrape+classify command that prints results to terminal and writes `data/single-testing.json`.
+- **Reason:** Enable quick, one-off testing without running the full pipeline.
+
 ### Add Root .gitignore for Safe Pushes
 - **Timestamp:** 2026-02-02T21:05:00
 - **File:** `.gitignore`

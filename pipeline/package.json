@@ -7,6 +7,7 @@
     "search": "tsx src/search.ts",
     "scrape": "tsx src/scrape.ts",
     "classify": "tsx src/classify.ts",
+    "single": "tsx src/single.ts",
     "pipeline": "tsx src/pipeline.ts",
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"

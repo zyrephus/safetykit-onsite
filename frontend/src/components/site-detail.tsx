@@ -36,17 +36,25 @@ export function SiteDetail({ site, open, onClose }: SiteDetailProps) {
 
         <div className="space-y-4 mt-4">
           {/* Violation Status */}
-          <Card className={`${site.is_violation ? 'bg-red-950/50 border-red-500/50' : 'bg-green-950/50 border-green-500/50'}`}>
+          <Card className={`${
+            site.is_violation
+              ? 'bg-red-950/50 border-red-500/50'
+              : site.risk_score > 50
+              ? 'bg-yellow-950/50 border-yellow-500/50'
+              : 'bg-green-950/50 border-green-500/50'
+          }`}>
             <CardContent className="pt-6">
               <div className="flex items-center gap-3">
                 {site.is_violation ? (
                   <XCircle className="h-8 w-8 text-red-400" />
+                ) : site.risk_score > 50 ? (
+                  <AlertTriangle className="h-8 w-8 text-yellow-400" />
                 ) : (
                   <CheckCircle2 className="h-8 w-8 text-green-400" />
                 )}
                 <div>
                   <div className="text-xl font-bold">
-                    {site.is_violation ? 'VIOLATION DETECTED' : 'NO VIOLATION'}
+                    {site.is_violation ? 'VIOLATION DETECTED' : site.risk_score > 50 ? 'WARNING - MODERATE RISK' : 'SAFE - NO VIOLATION'}
                   </div>
                   <div className="text-sm text-slate-400">
                     Confidence: {site.confidence} | Risk Score: {site.risk_score}/100

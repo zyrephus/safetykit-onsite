@@ -13,7 +13,6 @@ import {
 } from '@/components/ui/table'
 import { SiteDetail } from './site-detail'
 import type { ClassificationResult } from '@/lib/types'
-import { getConfidenceBadgeClass } from '@/lib/utils'
 
 interface ResultsTableProps {
   results: ClassificationResult[]
@@ -56,17 +55,29 @@ export function ResultsTable({ results }: ResultsTableProps) {
                     </a>
                   </TableCell>
                   <TableCell>
-                    <Badge variant={result.is_violation ? 'destructive' : 'secondary'}>
-                      {result.is_violation ? 'Violation' : 'Safe'}
-                    </Badge>
+                    {result.is_violation ? (
+                      <Badge variant="destructive">Violation</Badge>
+                    ) : result.risk_score > 50 ? (
+                      <Badge className="bg-yellow-500 text-slate-950 border-yellow-500 hover:bg-yellow-600">
+                        Warning
+                      </Badge>
+                    ) : (
+                      <Badge className="bg-green-500 text-white border-green-500 hover:bg-green-600">
+                        Safe
+                      </Badge>
+                    )}
                   </TableCell>
                   <TableCell>
-                    <Badge className={getConfidenceBadgeClass(result.confidence)}>
+                    <span className={`font-medium capitalize ${
+                      result.confidence === 'high' ? 'text-red-400' :
+                      result.confidence === 'medium' ? 'text-yellow-400' :
+                      'text-green-400'
+                    }`}>
                       {result.confidence}
-                    </Badge>
+                    </span>
                   </TableCell>
                   <TableCell>
-                    <span className={`font-semibold ${result.risk_score >= 80 ? 'text-red-400' : result.risk_score >= 50 ? 'text-yellow-400' : 'text-slate-400'}`}>
+                    <span className={`font-semibold ${result.risk_score >= 80 ? 'text-red-400' : result.risk_score >= 50 ? 'text-yellow-400' : 'text-green-400'}`}>
                       {result.risk_score}
                     </span>
                   </TableCell>

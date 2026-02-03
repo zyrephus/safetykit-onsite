@@ -31,9 +31,9 @@ export function formatDate(dateString: string): string {
 
 export function getConfidenceBadgeClass(confidence: string): string {
   const colors = {
-    high: 'bg-red-400 hover:bg-red-500 text-slate-950',
-    medium: 'bg-yellow-400 hover:bg-yellow-500 text-slate-950',
-    low: 'bg-slate-400 hover:bg-slate-500 text-slate-950'
+    high: 'bg-red-500 hover:bg-red-600 text-white',
+    medium: 'bg-yellow-500 hover:bg-yellow-600 text-slate-950',
+    low: 'bg-green-500 hover:bg-green-600 text-white'
   }
   return colors[confidence as keyof typeof colors] || colors.low
 }

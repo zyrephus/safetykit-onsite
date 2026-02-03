@@ -323,3 +323,49 @@ All changes to the project are logged here.
   - Deployed dev server successfully at http://localhost:3000
 - **Reason:** User requested frontend to display classified-results.json data cleanly using Next.js, Tailwind, and shadcn
 
+
+### Updated Confidence Badge Colors
+- **Timestamp:** 2026-02-03T00:50:00
+- **Component:** Frontend - Confidence Badges
+- **Changes:**
+  - Updated getConfidenceBadgeClass function to use 400 color variants matching risk score colors
+  - High confidence: bg-red-400 (matches risk score >= 80)
+  - Medium confidence: bg-yellow-400 (matches risk score >= 50)
+  - Low confidence: bg-slate-400 (matches risk score < 50)
+  - Added dark text (text-slate-950) for better contrast on bright backgrounds
+- **Reason:** User requested confidence badge colors to match risk score color scheme
+
+
+### Changed Low Risk and Safe Badge Colors to Green
+- **Timestamp:** 2026-02-03T00:52:00
+- **Component:** Frontend - Badge Colors
+- **Changes:**
+  - Updated low risk score color from slate to green (text-green-400)
+  - Changed Safe badge from secondary variant to green (bg-green-500)
+  - Updated low confidence badge from slate to green (bg-green-400)
+  - Color scheme now: High/Violation=Red, Medium=Yellow, Low/Safe=Green
+- **Reason:** User requested green colors for low risk scores and safe badges
+
+
+### Added Warning Status Badge and Fixed Text Contrast
+- **Timestamp:** 2026-02-03T00:55:00
+- **Component:** Frontend - Status Badges
+- **Changes:**
+  - Added new "Warning" status badge for sites with risk_score > 50 but not violations (yellow)
+  - Updated status badge logic: Violation (red) → Warning (yellow, risk > 50) → Safe (green, risk ≤ 50)
+  - Updated site detail modal to show three states: VIOLATION DETECTED, WARNING - MODERATE RISK, SAFE - NO VIOLATION
+  - Fixed confidence badge text contrast: red/green badges use white text, yellow uses dark text
+  - Used 500 color variants instead of 400 for better color saturation
+- **Reason:** User requested intermediate status for sites with risk scores above 50, and reported text visibility issues
+
+
+### Changed Confidence to Plain Text
+- **Timestamp:** 2026-02-03T00:57:00
+- **Component:** Frontend - Results Table
+- **Changes:**
+  - Removed Badge component from confidence column
+  - Changed to plain colored text with capitalize styling
+  - Maintained color scheme: high=red, medium=yellow, low=green
+  - Removed unused getConfidenceBadgeClass function import
+- **Reason:** User requested confidence to be displayed as text instead of badges
+
